@@ -11,7 +11,7 @@ const query = graphql`
         name
         imageSource {
           fluid {
-            srcWebp
+            src
           }
         }
       }
@@ -33,7 +33,7 @@ export default function Hero() {
   return (
     <Fragment>
       <div className="hero" style={{backgroundImage: `linear-gradient(#333333cc, #33333333),
-    url(${currentImage.imageSource.fluid.srcWebp})`}}>
+    url(${currentImage.imageSource.fluid.src})`}}>
       <div className="hero-overlay">
         {documentToReactComponents(text[0].bodyContent.json)}
       </div>

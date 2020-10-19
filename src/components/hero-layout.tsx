@@ -1,6 +1,12 @@
 import React, { Fragment } from 'react'
 
-export default function HeroLayout({children, image, label}) {
+interface HeroLayoutProps {
+  children: ChildNode
+  image: string
+  label: string
+}
+
+export default function HeroLayout({children, image, label}: HeroLayoutProps) {
   return (
     <Fragment>
       <div className="hero" style={{backgroundImage: `linear-gradient(#333333cc, #33333333),

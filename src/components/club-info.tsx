@@ -12,7 +12,7 @@ const query = graphql`
         name
         imageSource {
           fluid {
-            srcWebp
+            src
           }
         }
       }
@@ -28,9 +28,18 @@ const query = graphql`
 }
 `
 
-export default function ClubInfo(props) {
+interface imageInterface {
+  id: string,
+  name: string,
+  imageSource: {
+    fluid: {
+      srcWebp: string
+    }
+  }
+}
+
+export default function ClubInfo() {
   const { images : { nodes : slideshowImages }, text : { nodes : text} } = useStaticQuery(query)
-  console.log('text', text)
   return (
     <Fragment>
       <div className="club-information">
@@ -44,9 +53,9 @@ export default function ClubInfo(props) {
         totalSlides={slideshowImages.length}
       >
         <Slider>
-          {slideshowImages.map((image, index) => (
+          {slideshowImages.map((image:imageInterface, index:number) => (
             <Slide index={index} key={image.id}>
-              <Image src={image.imageSource.fluid.srcWebp}/>
+              <Image hasMasterSpinner={true} src={image.imageSource.fluid.src}/>
             </Slide>
           ))}
         </Slider>
