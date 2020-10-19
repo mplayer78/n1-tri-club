@@ -1,0 +1,296 @@
+:root {
+  --small-padding: 6px;
+  --med-padding: 12px;
+  --link-gap: 40px;
+  --body-width: 960px;
+  --white: #ffffff;
+  --black: #000000;
+  --im-red: rgb(227, 24, 55);
+  --mid-grey: #666666;
+  --dark-grey: #333333;
+  --disabled-opacity: 25%;
+  --shadow-subtle: 5px 5px 10px 0px rgba(0, 0, 0, 0.1);
+  font-size: 16px;
+}
+
+body {
+  font-family: "Source Sans Pro";
+  color: var(--black);
+  padding: 0;
+  margin: 0;
+}
+
+h1 {
+  font-size: 2.5em;
+  font-weight: 500;
+}
+
+h4 {
+  font-size: 1.5em;
+  margin: 1em 0;
+  font-weight: 500;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+header {
+  width: 100%;
+  background: var(--white);
+  max-height: 80px;
+  overflow: visible;
+}
+
+#gatsby-focus-wrapper {
+  height: 100%;
+}
+
+.App {
+  position: relative;
+}
+
+.logo {
+  height: 70px;
+  display: flex;
+  gap: var(--med-padding);
+  width: 20vw;
+  min-width: 190px;
+  padding: var(--med-padding);
+  justify-content: center;
+  box-shadow: var(--shadow-subtle);
+  z-index: 100;
+  background-color: var(--white);
+}
+
+.logo img {
+  height: 100%;
+  width: auto;
+}
+
+.logo-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.logo-text:nth-child(2) {
+  color: var(--mid-grey);
+}
+
+nav {
+  width: 100%;
+  height: 100%;
+  max-width: var(--body-width);
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* list of links */
+.nav-links {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  justify-content: flex-start;
+  gap: var(--link-gap);
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  text-transform: uppercase;
+  padding-left: var(--link-gap);
+}
+
+.nav-link {
+  padding: var(--med-padding) 0;
+  box-sizing: border-box;
+  border-bottom: solid transparent 4px;
+  border-top: solid transparent 4px;
+  transition: border 0.5ms;
+}
+
+.nav-link:hover {
+  border-bottom: solid var(--im-red) 4px;
+}
+
+.hamburger {
+  display: none;
+  border: none;
+  background-color: transparent;
+  padding: 20px;
+  outline: none;
+  height: 100%;
+}
+
+.hamburger img {
+  height: 50%;
+}
+
+.hero {
+  background-color: var(--im-red);
+  width: 100vw;
+  min-height: 500px;
+  position: relative;
+  margin-left: -50vw;
+  left: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 0 calc((100vw - 960px) / 2);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  object-fit: cover;
+  background-attachment: fixed;
+}
+
+.hero-overlay {
+  width: 100%;
+  max-width: 300px;
+  padding-left: var(--med-padding);
+  color: white;
+  text-shadow: var(--shadow-subtle);
+}
+
+.club-information {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--link-gap);
+  padding-top: var(--link-gap);
+}
+
+.club-information_text,
+.club-information_image {
+  flex: 1;
+  min-width: 360px;
+}
+
+.carousel {
+  position: relative;
+}
+
+.carousel img {
+  object-fit: cover;
+}
+
+.carousel__back-button,
+.carousel__next-button {
+  position: absolute;
+  top: 45%;
+  z-index: 100;
+  border-radius: 0;
+  outline: none;
+  border: none;
+  width: 10%;
+  height: 10%;
+  background-color: var(--dark-grey);
+  opacity: 80%;
+  color: white;
+  font-size: 2em;
+}
+
+.carousel__back-button {
+  left: 0;
+}
+
+.carousel__next-button {
+  right: 0;
+}
+
+.carousel__back-button:disabled,
+.carousel__next-button:disabled {
+  opacity: var(--disabled-opacity);
+}
+
+.carousel__dot-group {
+  position: absolute;
+  bottom: var(--med-padding);
+  left: var(--med-padding);
+  display: flex;
+}
+
+.carousel__dot {
+  outline: none;
+  background-color: var(--dark-grey);
+  padding: 10px;
+  border: none;
+  margin-right: var(--med-padding);
+  border-radius: 50%;
+}
+
+.carousel__dot--selected {
+  background-color: var(--im-red);
+}
+
+.member-display {
+  display: grid;
+  grid-template-columns: 100px auto;
+  gap: var(--link-gap);
+  margin: var(--link-gap);
+  justify-content: center;
+  align-items: center;
+}
+
+.member-display img {
+  width: 100%;
+}
+
+.member-display_img-container {
+  border-radius: 50%;
+  overflow: hidden;
+  width: 10vw;
+  height: 10vw;
+}
+
+.member-display h3 {
+  text-transform: uppercase;
+}
+
+.member-display h4 {
+  text-transform: uppercase;
+  font-size: 1em;
+}
+
+/* iPad Portrait Breakpoint */
+@media (max-width: 770px) {
+  .nav-links {
+    transform: translateY(-100%);
+    opacity: 0;
+    position: absolute;
+    height: min-content;
+    box-shadow: var(--shadow-subtle);
+    transition: opacity 0.2s ease-in, transform 0.4s ease-in-out;
+    animation-direction: alternate;
+    z-index: 10000;
+  }
+  .hamburger {
+    display: inline-block;
+  }
+  .menu-open {
+    display: block;
+    background-color: var(--white);
+    width: 80%;
+    margin: 0 10%;
+    top: 100px;
+    right: 0px;
+    opacity: 1;
+    transform: translate(0);
+  }
+  .logo {
+    box-shadow: none;
+    padding: 0;
+    align-items: center;
+  }
+  .logo img {
+    height: 60px;
+  }
+  .hero-overlay {
+    padding-left: 100px;
+  }
+}
