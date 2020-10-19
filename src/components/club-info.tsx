@@ -33,7 +33,7 @@ interface imageInterface {
   name: string,
   imageSource: {
     fluid: {
-      srcWebp: string
+      src: string
     }
   }
 }

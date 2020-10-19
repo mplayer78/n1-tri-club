@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react'
 
 interface HeroLayoutProps {
-  children: ChildNode
+  children: React.ReactNode
   image: string
   label: string
 }

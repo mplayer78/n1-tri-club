@@ -1,9 +1,13 @@
 import { Link } from "gatsby"
 import React, {useState} from "react"
-import n1_logo from '../images/n1_logo.png';
-import hamburger from '../images/icon-hamburger.svg'
+const n1_logo = require('../images/n1_logo.png');
+const hamburger = require('../images/icon-hamburger.svg');
 
-const Header = (props) => {
+interface HeaderProps {
+  siteTitle?: string
+}
+
+const Header = (props: HeaderProps) => {
   const [menuExposed, setMenuExposed] = useState(false)
   return (
   <div className="App">
