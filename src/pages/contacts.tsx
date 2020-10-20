@@ -15,7 +15,7 @@ const query = graphql`
         position
         image {
           fluid {
-            srcWebp
+            src
           }
         }
         description {
@@ -55,7 +55,7 @@ const Contacts = () => {
   return (
     <Layout>
       <SEO title="Contacts" />
-      <HeroLayout image={images[0].imageSource.fluid.srcWebp} label={"Contacts and Admin"}>
+      <HeroLayout image={images[0].imageSource.fluid.src} label={"Contacts and Admin"}>
         <div className="commitee-members">
           {member.map((member: MemberInterface) => (
             <div className="member-display">

@@ -146,6 +146,9 @@ nav {
   background-repeat: no-repeat;
   background-position: center -100px;
   background-size: cover;
+  -moz-background-size: cover;
+  -webkit-background-size: cover;
+  -o-background-size: cover;
   object-fit: cover;
   background-attachment: fixed;
 }
@@ -291,6 +294,12 @@ nav {
     height: 60px;
   }
   .hero-overlay {
-    padding-left: 100px;
+    max-width: 100%;
+    text-align: center;
+    padding: 50px;
+  }
+  .hero {
+    background-attachment: scroll;
+    background-position: center;
   }
 }
