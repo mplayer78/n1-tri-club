@@ -1,15 +1,16 @@
-import React from "react"
-import Layout from "../components/layout"
-import SEO from "../components/seo"
-import Hero from "../components/hero";
-import ClubInfo from "../components/club-info";
+import React, { Fragment, useState } from 'react'
+import ClubInfo from '../components/club-info'
+import Hero from '../components/hero'
+import Layout from '../components/layout'
+import { Header } from '../components/header'
 
-const IndexPage = () => (
-  <Layout>
-    <SEO title="Home" />
-    <Hero/>
-    <ClubInfo/>
-  </Layout>
-)
+function HomePage() {
+  return (
+    <Layout>
+      <Hero/>
+      <ClubInfo/>
+    </Layout>
+    )
+}
 
-export default IndexPage
+export default HomePage

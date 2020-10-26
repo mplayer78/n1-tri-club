@@ -1,18 +1,10 @@
-/**
- * Layout component that queries for data
- * with Gatsby's useStaticQuery component
- *
- * See: https://www.gatsbyjs.com/docs/use-static-query/
- */
-
-import React, { ReactChild, ReactChildren, ReactNode } from "react"
+import React, { Fragment, ReactChild, ReactChildren, ReactNode, useEffect } from "react"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
-
-import Header from "./header"
-import "./layout.css"
 import "./styles.css"
 import "typeface-source-sans-pro"
+import { useUIState } from "../context/uiContext"
+import { Header } from "./header"
 
 interface LayoutProps {
   children: ReactNode
@@ -28,29 +20,19 @@ const Layout = ({ children }:LayoutProps) => {
       }
     }
   `)
-
+const { state: {menuExposed}, setMenuHidden } = useUIState()
+useEffect(() => {
+  setMenuHidden()
+}, [])
   return (
-    <>
-      <Header siteTitle={data.site.siteMetadata?.title || `Title`} />
-      <div
-        style={{
-          margin: `0 auto`,
-          maxWidth: 960,
-          padding: `0 1.0875rem 1.45rem`,
-        }}
-      >
-        <main>{children}</main>
-        <footer style={{
-          marginTop: `2rem`
-        }}>
-        </footer>
+    <Fragment>
+      <div className="page">
+      <Header/>
+        <div className={`mask ${menuExposed ? "mask_exposed" : ""}`}/>
+        {children}
       </div>
-    </>
+    </Fragment>
   )
-}
-
-Layout.propTypes = {
-  children: PropTypes.node.isRequired,
 }
 
 export default Layout

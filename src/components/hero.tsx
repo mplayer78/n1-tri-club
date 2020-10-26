@@ -10,13 +10,13 @@ const query = graphql`
         id
         name
         imageSource {
-          fluid {
+          fluid(sizes: "2000") {
             src
           }
         }
       }
     }
-    text : allContentfulSiteContent(filter: {name: {eq: "Hero Overlay"}}) {
+    text : allContentfulSiteContent(filter: {name: {eq: "Front Page Hero"}}) {
     nodes {
       name
       bodyContent {
@@ -27,17 +27,17 @@ const query = graphql`
 }
 `
 
-export default function Hero() {
+export default function Hero(){
   const { images : {nodes : images}, text : {nodes : text} } = useStaticQuery(query)
   const currentImage = images[Math.floor(Math.random()*images.length)]
   return (
     <Fragment>
-      <div className="hero" style={{backgroundImage: `linear-gradient(#333333cc, #33333333),
+      <div className="hero-image" style={{backgroundImage: `linear-gradient(#333333cc, #33333333),
     url(${currentImage.imageSource.fluid.src})`}}>
-      <div className="hero-overlay">
-        {documentToReactComponents(text[0].bodyContent.json)}
       </div>
-    </div>
+      <div className="hero-text">
+      {documentToReactComponents(text[0].bodyContent.json)}
+      </div>
     </Fragment>
   )
 }

@@ -1,0 +1,44 @@
+.carousel__slider {
+}
+
+.carousel__image {
+  object-fit: cover;
+}
+
+.carousel__dot-group {
+  position: absolute;
+  bottom: var(--small-padding);
+  left: var(--small-padding);
+}
+
+.carousel__dot {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  outline: none;
+  border: none;
+  margin: var(--small-padding);
+}
+
+.carousel_dot--selected {
+  background-color: var(--im-red);
+}
+
+.carousel__back-button {
+  left: 0;
+}
+
+.carousel__next-button {
+  right: 0;
+}
+
+.carousel__next-button,
+.carousel__back-button {
+  position: absolute;
+  top: 50%;
+  margin: 0 var(--small-padding);
+  border: none;
+  outline: none;
+  width: 40px;
+  height: 40px;
+}
