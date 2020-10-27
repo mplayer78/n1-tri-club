@@ -225,3 +225,34 @@ h5 {
     display: none;
   }
 }
+
+.member-display {
+  display: flex;
+  gap: var(--large-padding);
+  padding-top: var(--large-padding);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.member-display h3 {
+  margin-top: 0;
+}
+
+.member-display h4 {
+  font-size: 1em;
+  text-transform: uppercase;
+}
+
+.member-display_img-container {
+  width: 100%;
+  max-width: 100px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+}
+
+.member-display_img-container > img {
+  position: absolute;
+  width: 100%;
+  clip-path: circle(50%);
+}

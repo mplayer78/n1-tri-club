@@ -58,16 +58,7 @@ const Contacts = () => {
       <HeroLayout image={images[0].imageSource.fluid.src} label={"Contacts and Admin"}>
         <div className="commitee-members">
           {member.map((member: MemberInterface) => (
-            <div className="member-display">
-              <div className="member-display_img-container">
-                <img src={member.image.fluid.src} alt={member?.name ?? undefined}/>
-              </div>
-              <div className="member-display_info-container">
-                <h3>{member.name}</h3>
-                <h4>{member.position}</h4>
-                {documentToReactComponents(member.description.json)}
-              </div>
-            </div>
+            <MemberDisplay {...member}/>
           ))}
         </div>
       </HeroLayout>
@@ -76,3 +67,17 @@ const Contacts = () => {
 }
 
 export default Contacts
+
+function MemberDisplay(member: MemberInterface) {
+  return <div className="member-display">
+    <div className="member-display_img-container">
+      <img src={member.image.fluid.src} alt={member?.name ?? undefined} />
+    </div>
+    <div className="member-display_info-container">
+      <h3>{member.name}</h3>
+      <h4>{member.position}</h4>
+      {documentToReactComponents(member.description.json)}
+    </div>
+  </div>
+}
+
