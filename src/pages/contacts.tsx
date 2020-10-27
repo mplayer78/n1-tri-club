@@ -4,10 +4,10 @@ import {documentToReactComponents} from '@contentful/rich-text-react-renderer'
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-import HeroLayout from "../components/hero-layout"
+import HeroBanner from "../components/hero-banner"
 import { Document } from "@contentful/rich-text-types"
 
-const query = graphql`
+export const contactsQuery = graphql`
   query AdminInfo {
     member : allContentfulCommitteeMember {
       nodes {
@@ -51,17 +51,16 @@ interface MemberInterface {
 }
 
 const Contacts = () => {
-  const {member : {nodes : member}, images : {nodes : images}} = useStaticQuery(query)
+  const {member : {nodes : member}, images : {nodes : images}} = useStaticQuery(contactsQuery)
   return (
     <Layout>
       <SEO title="Contacts" />
-      <HeroLayout image={images[0].imageSource.fluid.src} label={"Contacts and Admin"}>
-        <div className="commitee-members">
-          {member.map((member: MemberInterface) => (
-            <MemberDisplay {...member}/>
-          ))}
-        </div>
-      </HeroLayout>
+      <HeroBanner image={images[0].imageSource.fluid.src} label="Club Contacts"/>
+      <div className="commitee-members">
+        {member.map((member: MemberInterface) => (
+          <MemberDisplay {...member}/>
+        ))}
+      </div>
     </Layout>
   )
 }

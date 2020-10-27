@@ -194,6 +194,22 @@ h5 {
   display: inline-block;
 }
 
+.hero-banner_image {
+  height: 200px;
+  grid-column: 1 / -1;
+  grid-row: 2 / 3;
+  object-fit: fill;
+  background-size: cover;
+  margin-bottom: var(--large-padding);
+}
+
+.hero-banner_overlay {
+  position: absolute;
+  grid-row: 2 /3;
+  align-self: center;
+  color: var(--white-opaque);
+}
+
 @media only screen and (max-width: 420px) {
   .logo {
     height: 100%;
@@ -227,32 +243,34 @@ h5 {
 }
 
 .member-display {
-  display: flex;
+  display: grid;
+  grid-template-columns: 100px auto;
   gap: var(--large-padding);
   padding-top: var(--large-padding);
-  max-width: 600px;
+  max-width: 750px;
   margin: 0 auto;
 }
 
 .member-display h3 {
-  margin-top: 0;
-}
-
-.member-display h4 {
-  font-size: 1em;
   text-transform: uppercase;
 }
 
+.member-display h4 {
+  text-transform: uppercase;
+  font-size: 1rem;
+}
+
 .member-display_img-container {
-  width: 100%;
-  max-width: 100px;
   overflow: hidden;
-  display: flex;
-  justify-content: center;
 }
 
 .member-display_img-container > img {
-  position: absolute;
-  width: 100%;
   clip-path: circle(50%);
+  width: 100%;
+}
+
+.training-session_each {
+  box-shadow: var(--shadow-subtle);
+  padding: var(--large-padding);
+  margin-bottom: var(--large-padding);
 }

@@ -1,16 +1,35 @@
 import React from "react"
-import { Link } from "gatsby"
+import { graphql, Link, useStaticQuery } from "gatsby"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
+import HeroBanner from "../components/hero-banner"
 
-const SecondPage = () => (
-  <Layout>
-    <SEO title="Page two" />
-    <h1>Hi from the second page</h1>
-    <p>Welcome to page 2</p>
-    <Link to="/">Go back to the homepage</Link>
-  </Layout>
-)
+const membershipQuery = graphql`
+  query {
+    images : allContentfulSiteImage(filter: {tags: {elemMatch: {tagName: {eq: "hero"}}}}) {
+      nodes {
+        id
+        name
+        imageSource {
+          fluid {
+            src
+          }
+        }
+      }
+    }
+  }
+`
+
+const SecondPage = () => {
+  const {images : {nodes : images}} = useStaticQuery(membershipQuery)
+  return (
+    <Layout>
+      <SEO title="Page two" />
+      <HeroBanner image={images[0].imageSource.fluid.src} label="Membership"/>
+      <p>With membership enquires please contact us</p>
+    </Layout>
+  )
+}
 
 export default SecondPage
