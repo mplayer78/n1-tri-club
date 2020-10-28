@@ -1,7 +1,7 @@
-/**
- * Implement Gatsby's Browser APIs in this file.
- *
- * See: https://www.gatsbyjs.com/docs/browser-apis/
- */
+import React from "react"
 
-// You can delete this file if you're not using it
+import { UIStateProvider } from "./src/context/uiContext"
+
+export const wrapRootElement = ({ element }) => (
+  <UIStateProvider>{element}</UIStateProvider>
+)

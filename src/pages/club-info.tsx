@@ -4,10 +4,22 @@ import {documentToReactComponents} from '@contentful/rich-text-react-renderer'
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
+import HeroBanner from "../components/hero-banner"
 
 const query = graphql`
   query ClubInfo {
-    text : allContentfulSiteContent(filter: {name: {eq: "Club Info"}}) {
+    images : allContentfulSiteImage(filter: {tags: {elemMatch: {tagName: {eq: "hero"}}}}) {
+      nodes {
+        id
+        name
+        imageSource {
+          fluid {
+            src
+          }
+        }
+      }
+    }
+    text : allContentfulSiteContent(filter: {name: {eq: "Club Information"}}) {
       nodes {
         name
         bodyContent {
@@ -18,10 +30,11 @@ const query = graphql`
   }
 `
 const ClubInfo = () => {
-  const {text : {nodes : text}} = useStaticQuery(query)
+  const {text : {nodes : text}, images : {nodes : images}} = useStaticQuery(query)
   return (
     <Layout>
       <SEO title="Club Information" />
+      <HeroBanner image={images[0].imageSource.fluid.src} label={text[0].name}/>
       {documentToReactComponents(text[0].bodyContent.json)} 
     </Layout>
   )
