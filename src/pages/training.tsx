@@ -7,7 +7,7 @@ import HeroBanner from "../components/hero-banner"
 
 const trainingQuery = graphql`
   query {
-    images : allContentfulSiteImage(filter: {tags: {elemMatch: {tagName: {eq: "hero"}}}}) {
+    images : allContentfulSiteImage(filter: {tags: {elemMatch: {tagName: {eq: "training"}}}}) {
       nodes {
         id
         name
@@ -41,7 +41,7 @@ const Training = () => {
     <div className="training-session_container">
       {trainingSessions.map(tSesh => (
         <div className="training-session_each">
-          <h1>{tSesh.name}</h1>
+          <h2>{tSesh.name}</h2>
           <h3>{tSesh.location}</h3>
           <h3>{tSesh.frequency} : {tSesh.regularDay}</h3>
           <h3>Starts at {tSesh.startTime} for {tSesh.duration}</h3>

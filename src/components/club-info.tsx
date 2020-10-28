@@ -29,7 +29,6 @@ const query = graphql`
 `
 export default function ClubInfo() {
   const { images : { nodes : slideshowImages }, text : { nodes : text} } = useStaticQuery(query)
-  console.log('slideshowImages', slideshowImages)
   return (
     <Fragment>
       <div className="front-page_info">

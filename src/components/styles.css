@@ -200,6 +200,7 @@ h5 {
   grid-row: 2 / 3;
   object-fit: fill;
   background-size: cover;
+  background-position: center;
   margin-bottom: var(--large-padding);
 }
 

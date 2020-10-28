@@ -7,7 +7,7 @@ import HeroBanner from "../components/hero-banner"
 
 const membershipQuery = graphql`
   query {
-    images : allContentfulSiteImage(filter: {tags: {elemMatch: {tagName: {eq: "hero"}}}}) {
+    images : allContentfulSiteImage(filter: {tags: {elemMatch: {tagName: {eq: "membership"}}}}) {
       nodes {
         id
         name
@@ -26,7 +26,7 @@ const SecondPage = () => {
   return (
     <Layout>
       <SEO title="Page two" />
-      <HeroBanner image={images[0].imageSource.fluid.src} label="Membership"/>
+      <HeroBanner image={images[0]?.imageSource?.fluid?.src} label="Membership"/>
       <p>With membership enquires please contact us</p>
     </Layout>
   )

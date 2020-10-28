@@ -23,7 +23,7 @@ export const contactsQuery = graphql`
         }
       }
     }
-    images : allContentfulSiteImage(filter: {tags: {elemMatch: {tagName: {eq: "hero"}}}}) {
+    images : allContentfulSiteImage(filter: {tags: {elemMatch: {tagName: {eq: "contacts"}}}}) {
       nodes {
         id
         name
