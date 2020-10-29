@@ -122,25 +122,69 @@ h5 {
 }
 
 .link-group {
-  /* gap: var(--link-gap); */
   display: flex;
   gap: var(--link-gap);
   align-items: center;
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-left: 0;
 }
 
-.link-group > a {
+li {
+  list-style: none;
+}
+
+.dropdown {
+  visibility: hidden;
+  position: absolute;
+  top: calc(100% + var(--large-padding));
+  right: 50%;
+  margin-right: -50%;
+  padding-left: 0;
+  opacity: 0;
+  transition: all 0.4s ease;
+  background-color: var(--white-opaque);
+  z-index: 1000;
+  padding: var(--large-padding);
+  line-height: 2rem;
+  white-space: nowrap;
+}
+
+.main-link:hover .dropdown,
+.dropdown:hover {
+  visibility: visible;
+  display: block;
+  opacity: 1;
+}
+
+.main-link,
+.sub-link {
   color: inherit;
   text-decoration: inherit;
   text-transform: uppercase;
   height: 100%;
   display: flex;
   align-items: center;
-  padding: var(--small-padding);
+  border-bottom: solid transparent 2px;
 }
 
-.link-group > a:hover {
-  background-color: var(--grey-opaque);
+.main-link a {
+  color: inherit;
+  text-decoration: inherit;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  position: relative;
 }
+
+.main-link:hover,
+.sub-link:hover {
+  border-bottom: solid var(--im-red) 2px;
+}
+
+/* .sub-link {
+  border-bottom: solid transparent 2px;
+} */
 
 .link-buttons {
   display: none;
@@ -148,6 +192,26 @@ h5 {
 
 .link-close {
   z-index: 300;
+}
+
+.link-list {
+  list-style: none;
+  height: 100%;
+}
+
+.more-links {
+  position: absolute;
+  top: 100%;
+  z-index: 3000;
+  background-color: var(--white-opaque);
+  padding: var(--large-padding);
+  list-style: none;
+  line-height: 2rem;
+  box-shadow: var(--shadow-subtle);
+}
+
+.hidden {
+  display: none;
 }
 
 .button_clear {

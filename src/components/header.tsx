@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useState } from 'react';
 import hamburger from '../images/icon-hamburger.svg';
 import closeIcon from '../images/icon-close.svg';
 import n1Logo from '../images/n1_logo.svg';
@@ -9,6 +9,7 @@ interface LinkType {
   path: string
   title: string
   children: Array<LinkType>
+  exposed?: boolean
 }
 
 const links: Array<LinkType> = [
@@ -63,14 +64,20 @@ export function Header() {
       </div>
       <nav className="nav-bar">
         <LogoWithText />
-        <div className={`link-group ${menuExposed ? "link-group_exposed" : ""}`}>
+        <ul className={`link-group ${menuExposed ? "link-group_exposed" : ""}`}>
           {links.map(link => (
-            <Link to={link.path} key={link.title}>
-              {link.title}
-              {link.children.length > 0 && <button className="button_clear" onClick={() => console.log("More Stuff!!")}>+</button>}
-            </Link>
+            <li className="main-link">
+              <Link to={link.path}>{link.title}</Link>
+              {link.children.length > 0 && <ul className="dropdown">
+              {link.children.map(subLink => (
+                <li className="sub-link">
+                  <Link to={subLink.path}>{subLink.title}</Link>
+              </li>
+              ))}
+              </ul>}
+          </li>
           ))}
-        </div>
+        </ul>
         <div className={`link-buttons ${menuExposed ? "hidden" : ""}`}>
           <button className="button_clear" onPointerDown={setMenuExposed}>
             <img src={hamburger} alt="more options" />
