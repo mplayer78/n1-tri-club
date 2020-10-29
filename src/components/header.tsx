@@ -1,6 +1,7 @@
 import React, { Fragment, useState } from 'react';
 import hamburger from '../images/icon-hamburger.svg';
 import closeIcon from '../images/icon-close.svg';
+import expandIcon from '../images/icon-expand.svg'
 import n1Logo from '../images/n1_logo.svg';
 import { Link } from 'gatsby';
 import { useUIState } from '../context/uiContext';
@@ -68,13 +69,18 @@ export function Header() {
           {links.map(link => (
             <li className="main-link">
               <Link to={link.path}>{link.title}</Link>
-              {link.children.length > 0 && <ul className="dropdown">
-              {link.children.map(subLink => (
-                <li className="sub-link">
-                  <Link to={subLink.path}>{subLink.title}</Link>
-              </li>
-              ))}
-              </ul>}
+              {link.children.length > 0 && 
+                <Fragment>
+                  <img src={expandIcon} alt="Expand Selection"/>
+                  <ul className="dropdown">
+                    {link.children.map(subLink => (
+                      <li className="sub-link">
+                        <Link to={subLink.path}>{subLink.title}</Link>
+                      </li>
+                    ))}
+                  </ul>
+                </Fragment>
+              }
           </li>
           ))}
         </ul>

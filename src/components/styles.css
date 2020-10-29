@@ -166,6 +166,12 @@ li {
   display: flex;
   align-items: center;
   border-bottom: solid transparent 2px;
+  white-space: nowrap;
+}
+
+.main-link img {
+  max-width: 20px;
+  margin: 10px;
 }
 
 .main-link a {
@@ -181,10 +187,6 @@ li {
 .sub-link:hover {
   border-bottom: solid var(--im-red) 2px;
 }
-
-/* .sub-link {
-  border-bottom: solid transparent 2px;
-} */
 
 .link-buttons {
   display: none;
