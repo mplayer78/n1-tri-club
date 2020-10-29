@@ -7,7 +7,7 @@ import HeroBanner from "../components/hero-banner"
 
 const trainingQuery = graphql`
   query {
-    images : allContentfulSiteImage(filter: {tags: {elemMatch: {tagName: {eq: "hero"}}}}) {
+    images : allContentfulSiteImage(filter: {tags: {elemMatch: {tagName: {eq: "training"}}}}) {
       nodes {
         id
         name
@@ -32,6 +32,16 @@ const trainingQuery = graphql`
   }
 `
 
+interface TrainingSessionType {
+  name: string
+  description: string
+  frequency: string
+  regularDay: string
+  startTime: string
+  duration: string
+  location: string
+}
+
 const Training = () => {
   const {images : {nodes : images}, trainingSessions : {nodes : trainingSessions}} = useStaticQuery(trainingQuery)
   return (
@@ -39,9 +49,9 @@ const Training = () => {
     <SEO title="Training" />
     <HeroBanner image={images[0].imageSource.fluid.src} label={"Training & Events"}/>
     <div className="training-session_container">
-      {trainingSessions.map(tSesh => (
+      {trainingSessions.map((tSesh : TrainingSessionType) => (
         <div className="training-session_each">
-          <h1>{tSesh.name}</h1>
+          <h2>{tSesh.name}</h2>
           <h3>{tSesh.location}</h3>
           <h3>{tSesh.frequency} : {tSesh.regularDay}</h3>
           <h3>Starts at {tSesh.startTime} for {tSesh.duration}</h3>

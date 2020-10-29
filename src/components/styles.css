@@ -122,24 +122,70 @@ h5 {
 }
 
 .link-group {
-  /* gap: var(--link-gap); */
   display: flex;
   gap: var(--link-gap);
   align-items: center;
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-left: 0;
 }
 
-.link-group > a {
+li {
+  list-style: none;
+}
+
+.dropdown {
+  visibility: hidden;
+  position: absolute;
+  top: calc(100% + var(--large-padding));
+  right: 50%;
+  margin-right: -50%;
+  padding-left: 0;
+  opacity: 0;
+  transition: all 0.4s ease;
+  background-color: var(--white-opaque);
+  z-index: 1000;
+  padding: var(--large-padding);
+  line-height: 2rem;
+  white-space: nowrap;
+}
+
+.main-link:hover .dropdown,
+.dropdown:hover {
+  visibility: visible;
+  display: block;
+  opacity: 1;
+}
+
+.main-link,
+.sub-link {
   color: inherit;
   text-decoration: inherit;
   text-transform: uppercase;
   height: 100%;
   display: flex;
   align-items: center;
-  padding: var(--small-padding);
+  border-bottom: solid transparent 2px;
+  white-space: nowrap;
 }
 
-.link-group > a:hover {
-  background-color: var(--grey-opaque);
+.main-link img {
+  max-width: 20px;
+  margin: 10px;
+}
+
+.main-link a {
+  color: inherit;
+  text-decoration: inherit;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.main-link:hover,
+.sub-link:hover {
+  border-bottom: solid var(--im-red) 2px;
 }
 
 .link-buttons {
@@ -148,6 +194,26 @@ h5 {
 
 .link-close {
   z-index: 300;
+}
+
+.link-list {
+  list-style: none;
+  height: 100%;
+}
+
+.more-links {
+  position: absolute;
+  top: 100%;
+  z-index: 3000;
+  background-color: var(--white-opaque);
+  padding: var(--large-padding);
+  list-style: none;
+  line-height: 2rem;
+  box-shadow: var(--shadow-subtle);
+}
+
+.hidden {
+  display: none;
 }
 
 .button_clear {
@@ -162,6 +228,7 @@ h5 {
   grid-row: 2 / 3;
   object-fit: fill;
   background-size: cover;
+  background-position: center;
 }
 
 .hero-text {
@@ -200,6 +267,7 @@ h5 {
   grid-row: 2 / 3;
   object-fit: fill;
   background-size: cover;
+  background-position: center;
   margin-bottom: var(--large-padding);
 }
 
@@ -240,6 +308,10 @@ h5 {
   .hidden {
     display: none;
   }
+  .dropdown {
+    right: -200%;
+    margin-right: 0;
+  }
 }
 
 .member-display {
@@ -273,4 +345,50 @@ h5 {
   box-shadow: var(--shadow-subtle);
   padding: var(--large-padding);
   margin-bottom: var(--large-padding);
+}
+
+.contact-form {
+  max-width: 750px;
+  display: grid;
+  grid-template-columns: minmax(100px, 30%) 1fr;
+  gap: var(--large-padding);
+  padding: var(--large-padding);
+  margin: 0 auto;
+  box-shadow: var(--shadow-subtle);
+  border: none;
+}
+
+.contact-form input,
+.contact-form textarea {
+  border: solid transparent 2px;
+  background-color: var(--grey-opaque);
+  outline: none;
+  font-family: inherit;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  background-color: var(--white);
+  border: solid var(--grey-opaque) 2px;
+}
+
+.contact-label {
+  text-align: end;
+}
+
+.contact-submit {
+  grid-column: 1 / -1;
+  justify-self: flex-end;
+  padding: var(--large-padding);
+  border-radius: 0;
+  border: solid var(--dark-grey) 4px;
+  background-color: transparent;
+  text-transform: uppercase;
+  font-family: inherit;
+  font-size: 1.2rem;
+  outline: none;
+}
+
+.contact-submit:focus {
+  background-color: var(--grey-opaque);
 }

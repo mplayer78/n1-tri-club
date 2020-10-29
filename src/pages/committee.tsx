@@ -23,7 +23,7 @@ export const contactsQuery = graphql`
         }
       }
     }
-    images : allContentfulSiteImage(filter: {tags: {elemMatch: {tagName: {eq: "hero"}}}}) {
+    images : allContentfulSiteImage(filter: {tags: {elemMatch: {tagName: {eq: "contacts"}}}}) {
       nodes {
         id
         name
@@ -54,8 +54,8 @@ const Contacts = () => {
   const {member : {nodes : member}, images : {nodes : images}} = useStaticQuery(contactsQuery)
   return (
     <Layout>
-      <SEO title="Contacts" />
-      <HeroBanner image={images[0].imageSource.fluid.src} label="Club Contacts"/>
+      <SEO title="Contact Us" />
+      <HeroBanner image={images[0].imageSource.fluid.src} label="Contact Us"/>
       <div className="commitee-members">
         {member.map((member: MemberInterface) => (
           <MemberDisplay {...member}/>
