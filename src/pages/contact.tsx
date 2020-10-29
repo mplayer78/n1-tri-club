@@ -30,19 +30,17 @@ const Contacts = () => {
       <SEO title="Contact Us" />
       <HeroBanner image={images[0].imageSource.fluid.src} label="Contact Us"/>
       <form name="contact" method="post" data-netlify="true" data-netlify-honeypot="bot-field">
+        <fieldset className="contact-form">
+
         <input type="hidden" name="form-name" value="contact" />
-        <p>
-          <label>Your Name: <input type="text" name="name"/></label>
-        </p>
-        <p>
-          <label>Your Email: <input type="email" name="email"/></label>
-        </p>
-        <p>
-          <label>Message: <textarea name="message"></textarea></label>
-        </p>
-        <p>
-          <button type="submit">Send</button>
-        </p>
+        <label className="contact-label">Your Name:</label>
+        <input type="text" name="name"/>
+        <label className="contact-label">Your Email:</label>
+        <input type="email" name="email"/>
+        <label className="contact-label">Message:</label>
+        <textarea name="message" style={{resize: "none"}}></textarea>
+        <button className="contact-submit" type="submit">Send</button>
+        </fieldset>
       </form>
     </Layout>
   )

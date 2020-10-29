@@ -32,6 +32,16 @@ const trainingQuery = graphql`
   }
 `
 
+interface TrainingSessionType {
+  name: string
+  description: string
+  frequency: string
+  regularDay: string
+  startTime: string
+  duration: string
+  location: string
+}
+
 const Training = () => {
   const {images : {nodes : images}, trainingSessions : {nodes : trainingSessions}} = useStaticQuery(trainingQuery)
   return (
@@ -39,7 +49,7 @@ const Training = () => {
     <SEO title="Training" />
     <HeroBanner image={images[0].imageSource.fluid.src} label={"Training & Events"}/>
     <div className="training-session_container">
-      {trainingSessions.map(tSesh => (
+      {trainingSessions.map((tSesh : TrainingSessionType) => (
         <div className="training-session_each">
           <h2>{tSesh.name}</h2>
           <h3>{tSesh.location}</h3>
