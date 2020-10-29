@@ -308,6 +308,10 @@ li {
   .hidden {
     display: none;
   }
+  .dropdown {
+    right: -200%;
+    margin-right: 0;
+  }
 }
 
 .member-display {
