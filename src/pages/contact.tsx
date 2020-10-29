@@ -8,7 +8,7 @@ import HeroBanner from "../components/hero-banner"
 import { Document } from "@contentful/rich-text-types"
 
 export const contactsQuery = graphql`
-  query AdminInfo {
+  query {
     member : allContentfulCommitteeMember {
       nodes {
         name
@@ -54,8 +54,8 @@ const Contacts = () => {
   const {member : {nodes : member}, images : {nodes : images}} = useStaticQuery(contactsQuery)
   return (
     <Layout>
-      <SEO title="Contacts" />
-      <HeroBanner image={images[0].imageSource.fluid.src} label="Club Contacts"/>
+      <SEO title="Contact Us" />
+      <HeroBanner image={images[0].imageSource.fluid.src} label="Contact Us"/>
       <div className="commitee-members">
         {member.map((member: MemberInterface) => (
           <MemberDisplay {...member}/>
