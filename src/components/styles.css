@@ -199,6 +199,7 @@ li {
   height: 100%;
   transform: scaleX(0);
   transition: transform 0.2s;
+  pointer-events: none;
 }
 
 .main-link:hover:after {
