@@ -64,17 +64,19 @@ export function Header() {
       <div className="header-bar">
       </div>
       <nav className="nav-bar">
-        <LogoWithText />
+        <Link to="/">
+        <LogoWithText/>
+        </Link>
         <ul className={`link-group ${menuExposed ? "link-group_exposed" : ""}`}>
           {links.map(link => (
-            <li className="main-link">
+            <li className="main-link" key={link.title}>
               <Link to={link.path}>{link.title}</Link>
               {link.children.length > 0 && 
                 <Fragment>
                   <img src={expandIcon} alt="Expand Selection"/>
                   <ul className="dropdown">
                     {link.children.map(subLink => (
-                      <li className="sub-link">
+                      <li className="sub-link" key={subLink.title}>
                         <Link to={subLink.path}>{subLink.title}</Link>
                       </li>
                     ))}
