@@ -3,7 +3,6 @@ const path = require(`path`)
 exports.onCreateNode = ({ node, getNode }) => {
   if (node.internal.type === "ContentfulClubEvent"){
     const fileNode = getNode(node.parent)
-    console.log('\n', fileNode.relativePath)
   }
 }
 
