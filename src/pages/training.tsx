@@ -1,5 +1,5 @@
 import React from "react"
-import { graphql, useStaticQuery } from "gatsby"
+import { graphql, Link, useStaticQuery } from "gatsby"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
@@ -18,8 +18,9 @@ const trainingQuery = graphql`
         }
       }
     }
-    trainingSessions : allContentfulTrainingSession {
+    trainingSessions : allContentfulTrainingSession (sort: {fields: club_event___sessionType___club_event___eventDate, order: ASC}){
       nodes {
+        id
         name
         description
         frequency
@@ -27,12 +28,17 @@ const trainingQuery = graphql`
         startTime
         duration
         location
+        club_event {
+          eventDate(difference: "days")
+          contentful_id
+        }
       }
     }
   }
 `
 
 interface TrainingSessionType {
+  id: string
   name: string
   description: string
   frequency: string
@@ -40,6 +46,10 @@ interface TrainingSessionType {
   startTime: string
   duration: string
   location: string
+  club_event: Array<{
+    eventDate: string
+    contentful_id: string
+  }>
 }
 
 const Training = () => {
@@ -49,15 +59,23 @@ const Training = () => {
     <SEO title="Training" />
     <HeroBanner image={images[0].imageSource.fluid.src} label={"Training & Events"}/>
     <div className="training-session_container">
-      {trainingSessions.map((tSesh : TrainingSessionType) => (
-        <div className="training-session_each">
-          <h2>{tSesh.name}</h2>
-          <h3>{tSesh.location}</h3>
-          <h3>{tSesh.frequency} : {tSesh.regularDay}</h3>
-          <h3>Starts at {tSesh.startTime} for {tSesh.duration}</h3>
-          <p>{tSesh.description}</p>
-        </div>
-      ))}
+      {trainingSessions.map((tSesh : TrainingSessionType) => {
+        const futureEvents = tSesh.club_event ? tSesh.club_event.filter(ev => parseInt(ev.eventDate) <= 0) : []
+        return (
+          <div className="training-session_each" key={tSesh.id}>
+            <h2>{tSesh.name}</h2>
+            <h3>{tSesh.location}</h3>
+            <h3>{tSesh.frequency} : {tSesh.regularDay}</h3>
+            <h3>Starts at {tSesh.startTime} for {tSesh.duration}</h3>
+            <p>{tSesh.description}</p>
+            {futureEvents.length > 0 && <Link to={`${futureEvents[0].contentful_id}`}>
+              <button className="more-information">
+                <h3>Upcoming Event in {1 - parseInt(futureEvents[0].eventDate)} days. More info...</h3>
+              </button>
+            </Link>}
+          </div>
+        )
+      })}
     </div>
   </Layout>
   )
