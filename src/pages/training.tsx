@@ -31,6 +31,7 @@ const trainingQuery = graphql`
         club_event {
           eventDate(difference: "days")
           contentful_id
+          alertMessage
         }
       }
     }
@@ -49,6 +50,7 @@ interface TrainingSessionType {
   club_event: Array<{
     eventDate: string
     contentful_id: string
+    alertMessage: string
   }>
 }
 
@@ -69,8 +71,12 @@ const Training = () => {
             <h3>Starts at {tSesh.startTime} for {tSesh.duration}</h3>
             <p>{tSesh.description}</p>
             {futureEvents.length > 0 && <Link to={`${futureEvents[0].contentful_id}`}>
-              <button className="more-information">
-                <h3>Upcoming Event in {1 - parseInt(futureEvents[0].eventDate)} days. More info...</h3>
+              <button className="more-information" disabled={futureEvents[0].alertMessage.length>0}>
+                <h3>
+                  Upcoming Event.
+                  <span style={{color: "red"}}>{futureEvents[0].alertMessage}</span>
+                  More info...
+                </h3>
               </button>
             </Link>}
           </div>
