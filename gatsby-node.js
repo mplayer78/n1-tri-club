@@ -1,5 +1,7 @@
 const path = require(`path`)
 
+const AddAssetHtmlPlugin = require('add-asset-html-webpack-plugin');
+
 exports.onCreateNode = ({ node, getNode }) => {
   if (node.internal.type === "ContentfulClubEvent"){
     const fileNode = getNode(node.parent)
@@ -39,5 +41,14 @@ exports.createPages = async ({graphql, actions}) => {
         contentful_id : node.contentful_id
       },
     })
+  })
+}
+
+exports.onCreateWebpackConfig = ({plugins, actions}) => {
+  actions.setWebpackConfig({
+    plugins: [
+      new AddAssetHtmlPlugin({ filepath: require.resolve('./wasmjs/init_go.js') }),
+      new AddAssetHtmlPlugin({ filepath: require.resolve('./wasmjs/wasm_exec.js') }),
+    ]
   })
 }

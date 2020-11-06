@@ -65,7 +65,7 @@ export function Header() {
       </div>
       <nav className="nav-bar">
         <Link to="/">
-        <LogoWithText/>
+          <LogoWithText/>
         </Link>
         <ul className={`link-group ${menuExposed ? "link-group_exposed" : ""}`}>
           {links.map(link => (
