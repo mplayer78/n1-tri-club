@@ -4,6 +4,7 @@ Built for a local sports club and designed so that the content can be updated th
 
 Uses:
 * Gatsby - Static Site Generation
+* Typescript
 * Netlify - JAMStack Hosting
 * Contentful - Content provision
 
