@@ -89,17 +89,12 @@ a {
 }
 
 .logo {
-  height: 120%;
-  position: relative;
-  display: grid;
-  grid-template:
-    "image header" 50%
-    "image subheader" 50% / 60px auto;
   padding: var(--med-padding);
-  grid-gap: 0 var(--med-padding);
   z-index: 500;
   background-color: var(--white);
   box-shadow: var(--shadow-subtle);
+  max-height: 10rem;
+  max-width: 10rem;
 }
 
 .logo > * {

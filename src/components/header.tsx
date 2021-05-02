@@ -3,6 +3,7 @@ import hamburger from '../images/icon-hamburger.svg';
 import closeIcon from '../images/icon-close.svg';
 import expandIcon from '../images/icon-expand.svg'
 import n1Logo from '../images/n1_logo.svg';
+import NewLogo from '../components/new_logo'
 import { Link } from 'gatsby';
 import { useUIState } from '../context/uiContext';
 
@@ -102,10 +103,6 @@ export function Header() {
 }
 function LogoWithText() {
   return <div className="logo">
-    <div className="logo_image">
-      <img src={n1Logo} alt="n1 logo" />
-    </div>
-    <h3 className="logo_header">Tri Club</h3>
-    <h3 className="logo_subheader">East Devon</h3>
+    <NewLogo/>
   </div>;
 }
